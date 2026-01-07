@@ -10,7 +10,7 @@ const Home = () => {
         <h2>Add Notes</h2>
         <form>
           <div className="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">Email address</label>
             <input
               type="email"
               className="form-control"
@@ -23,7 +23,7 @@ const Home = () => {
             </small>
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputPassword1">Password</label>
             <input
               type="password"
               className="form-control"
@@ -37,7 +37,7 @@ const Home = () => {
               className="form-check-input"
               id="exampleCheck1"
             />
-            <label className="form-check-label" for="exampleCheck1">
+            <label className="form-check-label" htmlFor="exampleCheck1">
               Check me out
             </label>
           </div>
