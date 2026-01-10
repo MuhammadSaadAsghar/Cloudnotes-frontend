@@ -31,7 +31,8 @@ const addNote= async (title,description,tag)=>{
     },
     body: JSON.stringify({title ,description,tag}),
   });
-  const json= response.json()
+  const json=await response.json()
+  console.log(json);
   
 
    console.log("adding a new note")
@@ -67,25 +68,28 @@ setNotes(newnotes)
 // edit add
 const editNote= async (id,title,description,tag)=>{
   // api call 
-  const response = await fetch(`${host}/api/notes/updatenote${id}`, {
-    method: "POST",
+  const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjk1NGI1NWE4YjMxMWQxNzk4ZmMwZWE4In0sImlhdCI6MTc2NzE1OTEzMH0.fSfl_nh6Kuri2ob5x8VsjubmVsyLsKbrPGM5advRjb4"
     },
     body: JSON.stringify({title,description,tag}),
   });
-  const json= response.json()
+  const json= await response.json()
+  console.log(json);
   
   //logic to edit in client 
   for (let index = 0; index < notes.length; index++) {
     const element = notes[index];
     if (element._id===id) {
-      element.title=title;
-      element.description=description;
-      element.tag=tag;
+      notes[index].title=title;
+      notes[index].description=description;
+      notes[index].tag=tag;
+      break;
     }
   }
+  setNotes(notes)
 }
   
 
