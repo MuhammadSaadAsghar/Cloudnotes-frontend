@@ -12,8 +12,9 @@ const Notes = () => {
   }, []);
   const ref = useRef(null)
   const refclose = useRef(null)
+  const focusRef = useRef(null)
 
-    const [note, setNote] = useState({id:"",title:"",description:"",tag:"default"})
+    const [note, setNote] = useState({id:"",etitle:"",edescription:"",etag:"default"})
 
 
   const updateNote = (currentNote) => {
@@ -26,6 +27,10 @@ const Notes = () => {
     console.log("updating the notes...",note)
     editNote(note.id,note.etitle,note.edescription,note.etag)
         refclose.current.click();
+
+         setTimeout(() => {
+    focusRef.current.focus();
+  }, 300);
 
       }
       
@@ -109,7 +114,7 @@ setNote({...note ,[e.target.name]:e.target.value})
       </div>
 
       <div className="row my-3">
-        <h2>Yours Notes</h2>
+        <h2 ref={focusRef} tabIndex="-1">Yours Notes</h2>
         <div className="container mx-2">
         {notes.length===0 && 'No Notes to display'}
         </div>
