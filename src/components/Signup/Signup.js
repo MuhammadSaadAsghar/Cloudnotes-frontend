@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {useNavigate} from 'react-router-dom';
-function Signup() {
+import "./Signup.css"
+function Signup(props) {
    const [credentails, setCredentails] = useState({name:"",email:"",password:"",cpassword:""})
   let navigate = useNavigate();
    const handleSubmit= async (e)=>{
@@ -18,16 +19,17 @@ console.log(json)
 if (json.success) {
   localStorage.setItem('token',json.authtoken);
     navigate("/");
+    props.showAlert("successfully created your account" ,"success")
 }
 else{
-  alert("invalid credentails")
+   props.showAlert("invalid credentails" ,"danger")
 }
    }
    const onChange=(e)=>{
 setCredentails({...credentails,[e.target.name]:e.target.value})
    }
   return (
-    <div className="container">
+    <div className="signup-container">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">

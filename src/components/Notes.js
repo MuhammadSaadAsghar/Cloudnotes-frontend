@@ -3,7 +3,7 @@ import NoteContext from "../Context/notes/NoteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(NoteContext);
   const { notes, getNotes,editNote } = context;
   useEffect(() => {
@@ -21,12 +21,12 @@ const Notes = () => {
   
     ref.current.click();
     setNote({id:currentNote._id, etitle:currentNote.title,edescription:currentNote.description,etag:currentNote.tag});
-  
-};
+  };
   const handleclick=(e)=>{
     console.log("updating the notes...",note)
     editNote(note.id,note.etitle,note.edescription,note.etag)
-        refclose.current.click();
+    refclose.current.click();
+    props.showAlert("updated successfully","success")
 
          setTimeout(() => {
     focusRef.current.focus();
@@ -40,7 +40,7 @@ setNote({...note ,[e.target.name]:e.target.value})
 
   return (
     <>
-      <Addnote />
+      <Addnote showAlert={props.showAlert} />
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
 </button>
       
@@ -120,7 +120,7 @@ setNote({...note ,[e.target.name]:e.target.value})
         </div>
         {notes.map((note) => {
           return (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />
+            <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
           );
         })}
       </div>

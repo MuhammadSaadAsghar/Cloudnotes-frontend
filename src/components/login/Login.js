@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import "./Login.css";
 
 function Login(props) {
   const [credentails, setCredentails] = useState({email:"",password:""})
@@ -18,21 +19,22 @@ console.log(json)
 if (json.success) {
   localStorage.setItem('token',json.authtoken);
     navigate("/");
+      props.showAlert("logedin successfully" ,"success")
 }
 else{
-  alert("invalid credentails")
+  props.showAlert("invalid credentails" ,"danger")
 }
    }
    const onchange=(e)=>{
 setCredentails({...credentails,[e.target.name]:e.target.value})
    }
   return (
-    <div>
+    <div className="login-container">
+      <h2>Login Form</h2>
 <form onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="email" className="form-label">Email address</label>
     <input type="email" className="form-control" id="email" value={credentails.email} onChange={onchange} name='email' aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div className="mb-3">
     <label htmlFor="password" className="form-label">Password</label>

@@ -1,0 +1,62 @@
+/* Container center on page */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;       /* Top & bottom space */
+  padding: 30px 25px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+}
+
+/* Form title if any */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #080808;
+  font-family: Arial, sans-serif;
+  font-weight: bolder;
+}
+
+/* Input fields */
+.login-container .form-control {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus effect for inputs */
+.login-container .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* Checkbox label styling */
+.login-container .form-check-label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Submit button */
+.login-container .btn-primary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for button */
+.login-container .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Margin between elements */
+.login-container .mb-3 {
+  margin-bottom: 15px;
+}
